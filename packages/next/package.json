@@ -1,0 +1,14 @@
+{
+  "name": "@baretheme/next",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
+  "license": "MIT",
+  "peerDependencies": {
+    "next": "^9.3.4"
+  },
+  "dependencies": {
+    "next-svgr": "^0.0.2",
+    "next-transpile-modules": "^3.2.0"
+  }
+}
