@@ -4,6 +4,7 @@ import { getVersion } from './utils/get-version';
 
 export async function getDocumentBySlug(slug = '/') {
   const site = await readSite();
+  console.log(site);
   let language = site.defaultLanguage;
   let path = 'index';
 
@@ -19,6 +20,7 @@ export async function getDocumentBySlug(slug = '/') {
   }
 
   const document = await readDocumentByFileName(path);
+  console.log(document);
   const version = await getVersion(document, language);
   return version;
 }
