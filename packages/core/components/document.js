@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { getDocumentBySlug } from '../api';
+import { getDocumentVersionBySlug } from '../api';
 
 const Document = () => (
   <div className="container">
@@ -15,8 +15,8 @@ const Document = () => (
   </div>
 );
 
-Document.getInitialProps = async function getInitialProps({ res, asPath }) {
-  const document = await getDocumentBySlug(asPath);
+Document.getInitialProps = async function getInitialProps({ res, asPath: slug }) {
+  const document = await getDocumentVersionBySlug(slug);
   if (!document) {
     res.statusCode = 404;
     res.end('Document was not found.');
