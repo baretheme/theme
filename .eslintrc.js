@@ -19,6 +19,7 @@ module.exports = {
     "react/jsx-one-expression-per-line": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/control-has-associated-label": 0,
+    "no-underscore-dangle": 0,
     "func-names": 2,
   }
 };

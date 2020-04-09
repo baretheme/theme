@@ -1,3 +1,5 @@
+import { stripSlashes } from './strip-slashes';
+
 export function getLanguageFromSlug(slug) {
   if (!slug) return null;
 
@@ -7,9 +9,8 @@ export function getLanguageFromSlug(slug) {
   if (!match) {
     return null;
   }
+
   const hit = match[0];
-  return {
-    name: hit.replace(/\//g, ''),
-    path: hit,
-  };
+
+  return stripSlashes(hit);
 }

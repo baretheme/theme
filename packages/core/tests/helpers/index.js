@@ -1,8 +1,11 @@
-import chance from 'chance';
+import { random } from 'lodash';
+import { v4 as id } from 'uuid';
 
-export const randomCollection = (fn, min = 1, max = 5) => {
-  const n = chance.integer({ min, max });
+export { random, id };
+
+export const pickOne = (data) => data[random(data.length - 1)];
+
+export const createMany = (fn, min = 1, max = 5) => {
+  const n = random(min, max);
   return Array.from({ length: n }, fn);
 };
-
-export const randomForEach = (data, fn) => data.map((item) => fn(item));

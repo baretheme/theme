@@ -28,8 +28,8 @@ export function readDocumentsDir() {
   }
 }
 
-export async function readDocumentByFileName(name) {
-  const file = `${name}.json`;
+export async function readDocumentByFilePath(path) {
+  const file = `${path}.json`;
   const fullPath = join(documentsPath, file);
 
   try {
@@ -42,5 +42,5 @@ export async function readDocumentByFileName(name) {
 
 export function readAllDocuments() {
   const slugs = readDocumentsDir();
-  return slugs.map((slug) => readDocumentByFileName(slug));
+  return slugs.map((slug) => readDocumentByFilePath(slug));
 }
