@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { getDocumentVersionBySlug } from '../api';
 
-const Document = () => (
+const Document = ({ title }) => (
   <div className="container">
     <Head>
       <title>Create Next App</title>
@@ -10,10 +11,18 @@ const Document = () => (
     </Head>
 
     <main>
-      document
+      {title}
     </main>
   </div>
 );
+
+Document.defaultProps = {
+  title: '',
+};
+
+Document.propTypes = {
+  title: PropTypes.string,
+};
 
 Document.getInitialProps = async function getInitialProps({ res, asPath: slug }) {
   const document = await getDocumentVersionBySlug(slug);
@@ -22,7 +31,7 @@ Document.getInitialProps = async function getInitialProps({ res, asPath: slug })
     res.end('Document was not found.');
     return;
   }
-  return {};
+  return document;
 };
 
 export { Document };

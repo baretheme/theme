@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mock-fs": "^4.11.0"
+  }
 }

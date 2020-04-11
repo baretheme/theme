@@ -1,46 +1,20 @@
 import { join } from 'path';
-import { readFile, readDir } from './utils/reader';
+import { readJson } from './lib/read-json';
+import { readAllJson } from './lib/read-all-json';
 
-const contentPath = process.env.CONTENT_PATH;
-const documentsDirectory = 'documents';
-const documentsRelativePath = join(contentPath, documentsDirectory);
-const documentsPath = join(process.cwd(), documentsRelativePath);
-const dataDirectory = 'data';
-const dataRelativePath = join(contentPath, dataDirectory);
-const dataPath = join(process.cwd(), dataRelativePath);
+let config = {};
 
-export async function readSite() {
-  const file = 'site.json';
-  const fullPath = join(dataPath, file);
+export const defaults = {
+  documentsPath: join(process.cwd(), 'content', 'documents'),
+  dataPath: join(process.cwd(), 'content', 'data'),
+};
 
-  try {
-    return readFile(fullPath);
-  } catch {
-    throw new Error(`[BARETHEME] Site does not exist. Please make sure a "site.json" file exists in "${dataRelativePath}".`);
-  }
-}
+export const setup = (options) => {
+  config = { ...defaults, ...options };
+};
 
-export function readDocumentsDir() {
-  try {
-    return readDir(documentsPath);
-  } catch {
-    throw new Error(`[BARETHEME] No documents directory found. Please make sure "${documentsRelativePath}" exists.`);
-  }
-}
-
-export async function readDocumentByFilePath(path) {
-  const file = `${path}.json`;
-  const fullPath = join(documentsPath, file);
-
-  try {
-    const fileContents = readFile(fullPath);
-    return fileContents;
-  } catch {
-    return null;
-  }
-}
-
-export function readAllDocuments() {
-  const slugs = readDocumentsDir();
-  return slugs.map((slug) => readDocumentByFilePath(slug));
-}
+export const getConfig = () => config;
+export const readSite = () => readJson(join(config.dataPath, 'site'));
+export const readNavigation = () => readJson(join(config.dataPath, 'navigation'));
+export const readAllDocuments = () => readAllJson(config.documentsPath);
+export const readDocument = (name) => readJson(join(config.documentsPath, name));
