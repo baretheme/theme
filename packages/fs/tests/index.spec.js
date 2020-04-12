@@ -1,6 +1,6 @@
-import { readJson } from '../lib/read-json';
-import { readAllJson } from '../lib/read-all-json';
-import {
+const { readJson } = require('../lib/read-json');
+const { readAllJson } = require('../lib/read-all-json');
+const {
   setup,
   getConfig,
   defaults,
@@ -8,7 +8,7 @@ import {
   readDocument,
   readNavigation,
   readSite,
-} from '../index';
+} = require('../index');
 
 jest.mock('../lib/read-json', () => ({
   readJson: jest.fn(),

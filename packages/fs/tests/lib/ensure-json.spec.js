@@ -1,4 +1,4 @@
-import { ensureJson } from '../../lib/ensure-json';
+const { ensureJson } = require('../../lib/ensure-json');
 
 describe('ensureJson', () => {
   it('should add a json extension', () => {

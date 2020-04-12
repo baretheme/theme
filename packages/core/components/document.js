@@ -25,7 +25,9 @@ Document.propTypes = {
 };
 
 Document.getInitialProps = async function getInitialProps({ res, asPath: slug }) {
+  console.log('LOL??', slug);
   const document = await getDocumentVersionBySlug(slug);
+  console.log(document);
   if (!document) {
     res.statusCode = 404;
     res.end('Document was not found.');

@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { readDir } from '../../lib/read-dir';
+const fs = require('fs');
+const { readDir } = require('../../lib/read-dir');
 
 jest.mock('fs', () => ({
   existsSync: jest.fn(),

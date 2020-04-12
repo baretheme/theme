@@ -1,6 +1,8 @@
-export function setup(defaults, options) {
-  return {
-    ...defaults,
-    ...options,
-  };
-}
+const setup = (defaults, options) => ({
+  ...defaults,
+  ...options,
+});
+
+module.exports = {
+  setup,
+};

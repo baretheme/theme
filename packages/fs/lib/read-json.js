@@ -1,7 +1,7 @@
-import fs from 'fs';
-import { ensureJson } from './ensure-json';
+const fs = require('fs');
+const { ensureJson } = require('./ensure-json');
 
-export function readJson(path) {
+const readJson = (path) => {
   if (!fs.existsSync(path)) {
     return null;
   }
@@ -14,4 +14,8 @@ export function readJson(path) {
   } catch {
     throw new Error('[BARETHEME] File must be valid json.');
   }
-}
+};
+
+module.exports = {
+  readJson,
+};

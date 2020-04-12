@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { readJson } from '../../lib/read-json';
+const fs = require('fs');
+const { readJson } = require('../../lib/read-json');
 
 jest.mock('fs', () => ({
   existsSync: jest.fn(),

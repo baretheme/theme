@@ -1,8 +1,12 @@
-import fs from 'fs';
+const fs = require('fs');
 
-export function readDir(path) {
+const readDir = (path) => {
   if (!fs.existsSync(path)) {
     return null;
   }
   return fs.readdirSync(path);
-}
+};
+
+module.exports = {
+  readDir,
+};
