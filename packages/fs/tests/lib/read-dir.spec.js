@@ -1,7 +1,7 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const { readDir } = require('../../lib/read-dir');
 
-jest.mock('fs', () => ({
+jest.mock('fs-extra', () => ({
   existsSync: jest.fn(),
   readdirSync: jest.fn(),
 }));

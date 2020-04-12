@@ -11,7 +11,7 @@ const Document = ({ title }) => (
     </Head>
 
     <main>
-      {title}
+      Title: {title}
     </main>
   </div>
 );
@@ -28,12 +28,13 @@ Document.getInitialProps = async function getInitialProps({ res, asPath: slug })
   console.log('LOL??', slug);
   const document = await getDocumentVersionBySlug(slug);
   console.log(document);
-  if (!document) {
-    res.statusCode = 404;
-    res.end('Document was not found.');
-    return;
-  }
-  return document;
+  return {};
+  // if (!document) {
+  //   res.statusCode = 404;
+  //   res.end('Document was not found.');
+  //   return;
+  // }
+  // return document;
 };
 
 export { Document };

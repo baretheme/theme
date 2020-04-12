@@ -6,8 +6,8 @@ jest.mock('@baretheme/fs', () => ({
 }));
 
 describe('getSite', () => {
-  it('returns the site', async () => {
-    await getSite();
+  it('returns the site', () => {
+    getSite();
     expect(readSite).toHaveBeenCalledTimes(1);
   });
 });

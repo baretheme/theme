@@ -1,5 +1,5 @@
 const { join } = require('path');
-const { setup: fsSetup } = require('@baretheme/fs');
+const { setup: fsSetup, getConfig } = require('@baretheme/fs');
 const withSvgr = require('next-svgr');
 const withTM = require('next-transpile-modules')(['@baretheme/fs', '@baretheme/core']);
 
@@ -18,6 +18,8 @@ module.exports = (pluginOptions = {}) => (nextConfig = {}) => {
     documentsPath: options.documentsPath,
     dataPath: options.dataPath,
   });
+
+  console.log('FS CONF', getConfig());
 
   return withTM(withSvgr({
     ...nextConfig,

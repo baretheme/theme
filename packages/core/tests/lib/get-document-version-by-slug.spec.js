@@ -18,7 +18,7 @@ beforeEach(() => {
     createDocument({ __fileName: 'blog' }),
     createDocument({ __fileName: 'blog/my-article' }),
   ];
-  readSite.mockResolvedValue(mockSite);
+  readSite.mockReturnValue(mockSite);
   readDocument.mockImplementation(async (name) => mockDocuments.find((d) => d.__fileName === name));
 });
 

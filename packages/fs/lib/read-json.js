@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const { ensureJson } = require('./ensure-json');
 
 const readJson = (path) => {
@@ -9,11 +9,7 @@ const readJson = (path) => {
   const jsonPath = ensureJson(path);
   const content = fs.readFileSync(jsonPath, 'utf8');
 
-  try {
-    return JSON.parse(content);
-  } catch {
-    throw new Error('[BARETHEME] File must be valid json.');
-  }
+  return JSON.parse(content);
 };
 
 module.exports = {

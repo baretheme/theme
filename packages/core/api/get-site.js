@@ -1,5 +1,5 @@
 import { readSite } from '@baretheme/fs';
 
-export async function getSite() {
+export function getSite() {
   return readSite();
 }
