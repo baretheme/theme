@@ -1,4 +1,4 @@
-import { readSite, readDocumentByFilePath } from '@baretheme/fs';
+import { readSite, readDocument } from '@baretheme/fs';
 import { getDocumentVersionBySlug } from '../../api';
 import { createSite } from '../fixtures/site';
 import { createDocument } from '../fixtures/document';
@@ -9,7 +9,7 @@ const mockSite = createSite({ defaultLanguage });
 
 jest.mock('@baretheme/fs', () => ({
   readSite: jest.fn(),
-  readDocumentByFilePath: jest.fn(),
+  readDocument: jest.fn(),
 }));
 
 beforeEach(() => {
@@ -19,7 +19,7 @@ beforeEach(() => {
     createDocument({ __fileName: 'blog/my-article' }),
   ];
   readSite.mockResolvedValue(mockSite);
-  readDocumentByFilePath.mockImplementation(async (name) => mockDocuments.find((d) => d.__fileName === name));
+  readDocument.mockImplementation(async (name) => mockDocuments.find((d) => d.__fileName === name));
 });
 
 describe('getDocumentVersionBySlug', () => {
