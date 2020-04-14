@@ -1,5 +1,5 @@
 import { readSite, readDocument } from '@baretheme/fs';
-import { getDocumentVersionBySlug } from '../../api';
+import { getDocumentVersionBySlug } from '../../api/get-document-version-by-slug';
 import { createSite } from '../fixtures/site';
 import { createDocument } from '../fixtures/document';
 
@@ -19,17 +19,17 @@ beforeEach(() => {
     createDocument({ __fileName: 'blog/my-article' }),
   ];
   readSite.mockReturnValue(mockSite);
-  readDocument.mockImplementation(async (name) => mockDocuments.find((d) => d.__fileName === name));
+  readDocument.mockImplementation((name) => mockDocuments.find((d) => d.__fileName === name));
 });
 
 describe('getDocumentVersionBySlug', () => {
-  it('returns the index document for "/"', async () => {
-    const documentVersion = await getDocumentVersionBySlug('/');
+  it('returns the index document for "/"', () => {
+    const documentVersion = getDocumentVersionBySlug('/');
     expect(documentVersion.title).toEqual(mockDocuments[0].versions.find((v) => v.language === defaultLanguage).title);
   });
 
-  it('returns the matching version for the language', async () => {
-    const documentVersion = await getDocumentVersionBySlug('/de');
+  it('returns the matching version for the language', () => {
+    const documentVersion = getDocumentVersionBySlug('/de');
     expect(documentVersion.title).toEqual(mockDocuments[0].versions.find((v) => v.language === 'de').title);
   });
 });
