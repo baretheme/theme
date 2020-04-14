@@ -4,7 +4,9 @@ const { getConfig } = require('./get-config');
 
 const readSite = () => {
   const config = getConfig();
-  return readJson(join(config.dataPath, 'site'));
+  const path = join(config.dataPath, 'site');
+  const site = readJson(path);
+  return site;
 };
 
 module.exports = {

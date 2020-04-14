@@ -1,2 +1,2 @@
-export * from './components/document';
-export * from './api';
+export * from './browser';
+export * from './server';

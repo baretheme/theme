@@ -1,10 +1,10 @@
 {
-  "name": "@baretheme/core",
+  "name": "@baretheme/api",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
   "license": "MIT",
   "dependencies": {
-    "@baretheme/api": "^1.0.0"
+    "@baretheme/fs": "^1.0.0"
   }
 }
