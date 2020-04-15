@@ -1,10 +1,12 @@
 module.exports = {
   root: true,
-  extends: ["airbnb"],
+  extends: ["airbnb", "plugin:cypress/recommended"],
   parser: "babel-eslint",
+  plugins: ["cypress"],
   env: {
     browser: true,
     jest: true,
+    "cypress/globals": true
   },
   rules: {
     "no-shadow": 0,
