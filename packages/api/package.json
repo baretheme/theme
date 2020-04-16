@@ -1,9 +1,14 @@
 {
   "name": "@baretheme/api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
   "dependencies": {
     "@baretheme/fs": "^1.0.0"
   }
