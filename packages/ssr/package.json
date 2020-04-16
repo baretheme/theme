@@ -1,5 +1,5 @@
 {
-  "name": "@baretheme/fs",
+  "name": "@baretheme/ssr",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,10 +12,7 @@
     "build": "tsc",
     "dev": "tsc -w"
   },
-  "devDependencies": {
-    "mock-fs": "^4.11.0"
-  },
   "dependencies": {
-    "fs-extra": "^9.0.0"
+    "@baretheme/api": "^1.0.0"
   }
 }
