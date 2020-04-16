@@ -35,3 +35,6 @@ cypress/videos
 
 # typescript
 dist
+
+# lerna
+lerna-debug.log

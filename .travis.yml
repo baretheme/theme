@@ -1,0 +1,23 @@
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+    - $HOME/.npm
+
+notifications:
+  email: false
+
+node_js:
+  - '13.6.0'
+
+before_install:
+  - npm i -g npm
+  - npm i
+
+script:
+  - npm test
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
