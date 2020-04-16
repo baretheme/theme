@@ -51,6 +51,7 @@
     "lerna": "^3.20.2",
     "lodash": "^4.17.15",
     "mock-fs": "^4.11.0",
+    "next": "^9.3.5",
     "semantic-release": "^17.0.4",
     "slugify": "^1.4.0",
     "start-server-and-test": "^1.11.0",
