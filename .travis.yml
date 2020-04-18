@@ -27,8 +27,13 @@ stages:
   - test:unit
   - test:e2e
 
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+
 e2e_defaults: &e2e_defaults
   script:
+    - yarn start:ci &
     - yarn e2e:ci --record --parallel --group $STAGE_NAME
     - kill $(jobs -p) || true
 
