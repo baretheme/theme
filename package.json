@@ -9,9 +9,8 @@
     "start": "yarn workspace example start",
     "clean": "yarn workspace example clean",
     "lint": "eslint packages/*/src",
-    "start:ci": "start-server-and-test start 3000",
     "e2e": "start-test start 3000 cy:open",
-    "e2e:ci": "start-server-and-test start 3000 cy:run",
+    "e2e:ci": "start-test start 3000 cy:run",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "jest"
