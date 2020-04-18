@@ -7,7 +7,7 @@ addons:
 cache:
   yarn: true
   directories:
-    - $HOME/.cache/Cypress
+    - $HOME/.cache
 
 notifications:
   email: false
@@ -16,7 +16,7 @@ node_js:
   - '13.6.0'
 
 install:
-  - yarn install
+  - yarn
   - yarn build
 
 branches:
