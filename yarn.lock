@@ -11060,11 +11060,6 @@ pretty-format@^25.1.0, pretty-format@^25.2.1, pretty-format@^25.3.0:
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
 
-print-env@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/print-env/-/print-env-0.1.2.tgz#0974cc45990b3115037825bac8bd0e75a5394b27"
-  integrity sha512-EYxH9D78sdOIMnmvS0HlIMUQRP/fDmAuY1MjQzxUCDG8rnv9AMwL+/rgbLTUf9Pe38oAflBbwL8zk9iTAlyz0A==
-
 private@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
