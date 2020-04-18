@@ -10,6 +10,7 @@ cache:
     - node_modules
     - ~/.cache
   override:
+    - yarn --frozen-lockfile
     - yarn cy:verify
     - yarn cy:info
 
@@ -20,7 +21,6 @@ node_js:
   - '13.6.0'
 
 install:
-  - yarn
   - yarn build
 
 branches:
