@@ -29,7 +29,7 @@ stages:
 
 e2e_defaults: &e2e_defaults
   script:
-    - yarn e2e:ci -- --record --parallel --group $STAGE_NAME
+    - yarn e2e:ci --record --parallel --group $STAGE_NAME
     - kill $(jobs -p) || true
 
 jobs:
