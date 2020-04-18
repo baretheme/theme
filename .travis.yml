@@ -8,7 +8,7 @@ cache:
   yarn: true
   directories:
     - node_modules
-    - .cache
+    - ~/.cache/Cypress
   override:
     - yarn cy:verify
     - yarn cy:info
