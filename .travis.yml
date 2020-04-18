@@ -9,7 +9,7 @@ cache:
   directories:
     - $HOME/.cache/Cypress
   override:
-    - yarn --frozen-lockfile
+    - yarn install --frozen-lockfile
     - yarn cy:verify
     - yarn cy:info
 
