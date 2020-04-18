@@ -8,10 +8,6 @@ cache:
   yarn: true
   directories:
     - $HOME/.cache/Cypress
-  override:
-    - yarn install --frozen-lockfile
-    - yarn cy:verify
-    - yarn cy:info
 
 notifications:
   email: false
@@ -20,6 +16,7 @@ node_js:
   - '13.6.0'
 
 install:
+  - yarn install --frozen-lockfile
   - yarn build
 
 branches:
