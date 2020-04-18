@@ -8,6 +8,7 @@ cache:
   yarn: true
   directories:
     - node_modules
+    - .cache
   override:
     - yarn cy:verify
     - yarn cy:info
