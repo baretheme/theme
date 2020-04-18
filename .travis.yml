@@ -33,8 +33,7 @@ branches:
 
 e2e_defaults: &e2e_defaults
   script:
-    - yarn start &
-    - yarn cy:run --record --parallel --group $STAGE_NAME
+    - yarn e2e:ci
     - kill $(jobs -p) || true
 
 jobs:
