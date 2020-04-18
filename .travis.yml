@@ -8,8 +8,11 @@ notifications:
 node_js:
   - '13.6.0'
 
-before_install:
+install:
   - yarn
+
+before_script:
+  - yarn build
 
 script:
   - yarn test
