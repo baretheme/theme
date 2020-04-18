@@ -1,7 +1,8 @@
-import { getDocumentVersionBySlug } from '@baretheme/api';
+import { getDocumentVersionBySlug, getData } from '@baretheme/api';
 
 export async function getServerSideProps({ res, req }) {
   const document = getDocumentVersionBySlug(req.url);
+  const data = getData();
 
   if (!document) {
     res.statusCode = 404;
@@ -11,7 +12,8 @@ export async function getServerSideProps({ res, req }) {
 
   return {
     props: {
-      ...document,
+      document,
+      data,
     },
   };
 }

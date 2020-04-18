@@ -1,26 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { PageProvider } from '../context/page';
 
-const Document = ({ title }) => (
-  <div className="container">
-    <Head>
-      <title>{title}</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const Document = ({ document }) => (
+  <PageProvider value={{ document }}>
+    <div className="container">
+      <Head>
+        <title>{document.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-    <main>
-      Title: {title}
-    </main>
-  </div>
+      <main>
+        Title: {document.title}
+      </main>
+    </div>
+  </PageProvider>
 );
 
-Document.defaultProps = {
-  title: '',
-};
-
 Document.propTypes = {
-  title: PropTypes.string,
+  document: PropTypes.shape({
+    title: PropTypes.string,
+  }).isRequired,
 };
 
 export { Document };

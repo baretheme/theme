@@ -1,7 +1,6 @@
 import { readSite, readDocument } from '@baretheme/fs';
+import { createSite, createDocument } from '@baretheme/support';
 import { getDocumentVersionBySlug } from '../../api/get-document-version-by-slug';
-import { createSite } from '../fixtures/site';
-import { createDocument } from '../fixtures/document';
 
 let mockDocuments;
 const defaultLanguage = 'en';

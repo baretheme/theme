@@ -2,6 +2,7 @@ import {
   getDocumentVersionBySlug,
   getNavigation,
   getSite,
+  getData,
 } from '..';
 
 describe('index', () => {
@@ -9,5 +10,6 @@ describe('index', () => {
     expect(getDocumentVersionBySlug).toBeDefined();
     expect(getSite).toBeDefined();
     expect(getNavigation).toBeDefined();
+    expect(getData).toBeDefined();
   });
 });

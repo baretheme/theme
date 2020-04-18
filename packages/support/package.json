@@ -1,6 +1,7 @@
 {
-  "name": "@baretheme/api",
+  "name": "@baretheme/support",
   "version": "1.0.0",
+  "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -11,11 +12,5 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w"
-  },
-  "dependencies": {
-    "@baretheme/fs": "^1.0.0"
-  },
-  "devDependencies": {
-    "@baretheme/support": "^1.0.0"
   }
 }

@@ -5,6 +5,7 @@ const {
   readDocument,
   readNavigation,
   readSite,
+  readData,
 } = require('../index');
 
 describe('index', () => {
@@ -15,5 +16,6 @@ describe('index', () => {
     expect(readDocument).toBeDefined();
     expect(readNavigation).toBeDefined();
     expect(readSite).toBeDefined();
+    expect(readData).toBeDefined();
   });
 });

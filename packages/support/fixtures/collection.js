@@ -1,8 +1,9 @@
 import { id, createMany } from '../helpers';
 
 export const createCollection = (props) => ({
+  $filename: 'collection',
   id: id(),
-  title: 'Articles',
+  title: 'Collection',
   ...props,
 });
 

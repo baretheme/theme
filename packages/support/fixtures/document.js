@@ -15,6 +15,7 @@ export const createVersion = (props) => ({
 });
 
 export const createDocument = (props) => ({
+  $filename: 'document',
   title: 'My document',
   date: new Date(),
   draft: false,

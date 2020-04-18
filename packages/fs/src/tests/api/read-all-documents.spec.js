@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 describe('readAllDocuments', () => {
-  it('passes the dataPath to readAllDocuments', () => {
+  it('passes the documentsPath to readAllDocuments', () => {
     const config = getConfig();
     readAllDocuments();
     expect(readAllJson).toHaveBeenCalledWith(config.documentsPath);
