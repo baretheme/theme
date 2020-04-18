@@ -4,10 +4,10 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "yarn workspaces run build",
+    "build": "lerna run build",
     "dev": "lerna run dev --parallel",
-    "start": "yarn workspace example start",
-    "clean": "yarn workspace example clean",
+    "start": "lerna --scope example run start",
+    "clean": "lerna --scope example run clean",
     "lint": "eslint packages/*/src",
     "e2e": "start-test start 3000 cy:open",
     "e2e:ci": "start-test start 3000 cy:run",
