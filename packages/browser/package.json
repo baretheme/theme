@@ -11,5 +11,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w"
+  },
+  "dependencies": {
+    "react": "^16.13.1"
   }
 }
