@@ -20,8 +20,6 @@ node_js:
 
 install:
   - yarn
-
-script:
   - yarn build
 
 branches:
