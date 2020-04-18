@@ -1,6 +1,16 @@
 language: node_js
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
 
-cache: yarn
+cache:
+  yarn: true
+  directories:
+    - node_modules
+  override:
+    - yarn cy:verify
+    - yarn cy:info
 
 notifications:
   email: false
@@ -11,12 +21,49 @@ node_js:
 install:
   - yarn
 
-before_script:
-  - yarn build
-
 script:
-  - yarn test
+  - yarn build
 
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+
+stages:
+  - test:unit
+  - test:e2e
+
+e2e_defaults: &e2e_defaults
+  script:
+    - $(npm bin)/print-env TRAVIS
+    - yarn start:ci &
+    - yarn cy:run -- --record --parallel --group $STAGE_NAME
+    - kill $(jobs -p) || true
+
+jobs:
+  include:
+    - stage: test:unit
+      script:
+        - yarn test
+    # we have multiple jobs to execute using just a single stage
+    # but we can pass group name via environment variable to Cypress test runner
+    - stage: test:e2e
+      env:
+        - STAGE_NAME="1x-electron on Travis CI"
+      <<: *e2e_defaults
+    # run tests in parallel by including several test jobs with same name variable
+    - stage: test:e2e
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *e2e_defaults
+    - stage: test:e2e
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *e2e_defaults
+    - stage: test:e2e
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *e2e_defaults
+    - stage: test:e2e
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *e2e_defaults
