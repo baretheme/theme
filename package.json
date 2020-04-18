@@ -11,10 +11,6 @@
     "lint": "eslint packages/*/src",
     "e2e": "start-test start 3000 cy:open",
     "e2e:ci": "start-test start 3000 cy:run",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:verify": "cypress verify",
-    "cy:info": "cypress info",
     "test": "jest"
   },
   "keywords": [],
