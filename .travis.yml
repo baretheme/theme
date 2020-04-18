@@ -7,8 +7,7 @@ addons:
 cache:
   yarn: true
   directories:
-    - node_modules
-    - ~/.cache/Cypress
+    - $HOME/.cache/Cypress
   override:
     - yarn --frozen-lockfile
     - yarn cy:verify
@@ -33,7 +32,7 @@ stages:
 
 e2e_defaults: &e2e_defaults
   script:
-    - $(npm bin)/print-env TRAVIS
+    - $(yarn bin)/print-env TRAVIS
     - yarn start:ci &
     - yarn cy:run -- --record --parallel --group $STAGE_NAME
     - kill $(jobs -p) || true
