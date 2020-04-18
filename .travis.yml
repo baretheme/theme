@@ -42,13 +42,6 @@ jobs:
     - stage: test:unit
       script:
         - yarn test
-    # we have multiple jobs to execute using just a single stage
-    # but we can pass group name via environment variable to Cypress test runner
-    - stage: test:e2e
-      env:
-        - STAGE_NAME="1x-electron on Travis CI"
-      <<: *e2e_defaults
-    # run tests in parallel by including several test jobs with same name variable
     - stage: test:e2e
       env:
         - STAGE_NAME="4x-electron on Travis CI"
