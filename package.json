@@ -4,6 +4,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "postinstall": "lerna bootstrap",
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
     "start": "lerna --scope example run start",
