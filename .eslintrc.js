@@ -1,8 +1,17 @@
 module.exports = {
   root: true,
-  extends: ["airbnb", "plugin:cypress/recommended"],
-  parser: "babel-eslint",
-  plugins: ["cypress"],
+  extends: [
+    "plugin:cypress/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    'airbnb-typescript',
+  ],
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+  parser: '@typescript-eslint/parser',
+  plugins: ["cypress", '@typescript-eslint'],
   env: {
     browser: true,
     jest: true,
@@ -23,5 +32,12 @@ module.exports = {
     "jsx-a11y/control-has-associated-label": 0,
     "no-underscore-dangle": 0,
     "func-names": 2,
+  },
+  settings: {
+    "import/resolver": {
+      "typescript": {
+        "directory": "packages/*/tsconfig.json"
+      },
+    }
   }
 };

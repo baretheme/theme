@@ -1,6 +1,6 @@
 const mock = require('mock-fs');
 const { createDocument } = require('@baretheme/test-utils');
-const { readJson } = require('../../lib/read-json');
+const { readJson } = require('./read-json');
 
 afterEach(() => {
   mock.restore();
@@ -9,12 +9,12 @@ afterEach(() => {
 describe('readJson', () => {
   it('should read a file if exists', () => {
     const mockFile = createDocument();
-
-    mock({
-      'content/documents': {
-        'file.json': mockFile,
-      },
-    });
+    console.log(mockFile);
+    // mock({
+    //   'content/documents': {
+    //     'file.json': mockFile,
+    //   },
+    // });
 
     const path = 'content/documents/file.json';
     const file = readJson(path);

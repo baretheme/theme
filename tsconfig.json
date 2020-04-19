@@ -1,22 +1,10 @@
 {
+  "extends": "./tsconfig.build.json",
+
   "compilerOptions": {
-    "allowJs": true,
-    "alwaysStrict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react",
-    "lib": ["dom", "es2020"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "es2015",
-    "outDir": "dist",
-    "declaration": true
+    "baseUrl": "./packages",
+    "paths": {
+      "@baretheme/*": ["*/src"]
+    },
   }
 }
