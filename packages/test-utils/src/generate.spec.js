@@ -150,7 +150,6 @@ describe('generate', () => {
         required: ['id', 'versions', 'collections', 'date', 'draft'],
       };
       const document = generate.createDocument();
-      console.log(document.date, typeof document.date);
       expect(document).toMatchSchema(schema);
     });
   });
