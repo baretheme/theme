@@ -1,4 +1,4 @@
-const { createDocuments } = require('@baretheme/support');
+const { createDocuments } = require('@baretheme/test-utils');
 const { readAllJson } = require('../../lib/read-all-json');
 const { readData } = require('../../api/read-data');
 const { getConfig } = require('../../api/get-config');

@@ -1,5 +1,5 @@
 import { readSite, readDocument } from '@baretheme/fs';
-import { createSite, createDocument } from '@baretheme/support';
+import { createSite, createDocument } from '@baretheme/test-utils';
 import { getDocumentVersionBySlug } from '../../api/get-document-version-by-slug';
 
 let mockDocuments;

@@ -16,6 +16,6 @@
     "@baretheme/fs": "^1.0.0"
   },
   "devDependencies": {
-    "@baretheme/support": "^1.0.0"
+    "@baretheme/test-utils": "^1.0.0"
   }
 }

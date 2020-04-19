@@ -13,7 +13,7 @@
     "dev": "tsc -w"
   },
   "devDependencies": {
-    "@baretheme/support": "^1.0.0",
+    "@baretheme/test-utils": "^1.0.0",
     "mock-fs": "^4.11.0"
   },
   "dependencies": {
