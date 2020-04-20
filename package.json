@@ -1,11 +1,11 @@
 {
-  "name": "nextjs",
+  "name": "baretheme",
   "version": "1.0.0",
-  "main": "index.js",
   "private": true,
   "scripts": {
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
+    "dev:test": "yarn workspace example-2 run dev",
     "start": "lerna --scope example run start",
     "clean": "lerna run clean",
     "lint": "eslint packages/*/src",
@@ -23,7 +23,8 @@
   "description": "",
   "workspaces": [
     "packages/*",
-    "example"
+    "example",
+    "example-2"
   ],
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
