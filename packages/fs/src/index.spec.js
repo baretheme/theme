@@ -6,7 +6,7 @@ const {
   readNavigation,
   readSite,
   readData,
-} = require('../index');
+} = require('./index');
 
 describe('index', () => {
   it('exports all public methods', () => {

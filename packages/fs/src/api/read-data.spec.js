@@ -1,7 +1,7 @@
 const { createDocuments } = require('@baretheme/test-utils');
-const { readAllJson } = require('../../lib/read-all-json');
-const { readData } = require('../../api/read-data');
-const { getConfig } = require('../../api/get-config');
+const { readAllJson } = require('../lib/read-all-json');
+const { readData } = require('./read-data');
+const { getConfig } = require('./get-config');
 
 jest.mock('../../lib/read-all-json', () => ({
   readAllJson: jest.fn(),

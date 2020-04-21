@@ -1,6 +1,6 @@
-const { readJson } = require('../../lib/read-json');
-const { readNavigation } = require('../../api/read-navigation');
-const { getConfig } = require('../../api/get-config');
+const { readJson } = require('../lib/read-json');
+const { readNavigation } = require('./read-navigation');
+const { getConfig } = require('./get-config');
 
 jest.mock('../../lib/read-json', () => ({
   readJson: jest.fn(),

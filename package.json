@@ -5,7 +5,7 @@
   "scripts": {
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
-    "dev:test": "yarn workspace example-2 run dev",
+    "dev:test": "yarn workspace example run dev",
     "start": "lerna --scope example run start",
     "clean": "lerna run clean",
     "lint": "eslint packages/*/src",

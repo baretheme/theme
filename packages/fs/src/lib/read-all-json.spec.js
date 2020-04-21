@@ -1,6 +1,6 @@
-const { readDir } = require('../../lib/read-dir');
-const { readJson } = require('../../lib/read-json');
-const { readAllJson } = require('../../lib/read-all-json');
+const { readDir } = require('./read-dir');
+const { readJson } = require('./read-json');
+const { readAllJson } = require('./read-all-json');
 
 jest.mock('../../lib/read-dir', () => ({
   readDir: jest.fn(),

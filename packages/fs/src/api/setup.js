@@ -1,17 +1,25 @@
 const { existsSync } = require('fs-extra');
 const { join } = require('path');
-const { CONFIG_PATH, DEFAULTS } = require('../constants');
+const { DEFAULTS, CONFIG_PATH } = require('../constants');
 const { writeJson } = require('../lib/write-json');
 
-const setup = (options) => {
-  const home = options.home || process.cwd();
+const setup = (options = {}) => {
+  const root = options.root || process.cwd();
+  const contentPath = join(root, options.content || DEFAULTS.content);
+  const documentsPath = join(contentPath, options.documents || DEFAULTS.documents);
+  const dataPath = join(contentPath, options.data || DEFAULTS.data);
 
-  if (!existsSync(join(home, 'content'))) {
-    console.log('Ooops, you don\'t have any content folder.');
-    return;
+  const defaults = {
+    contentPath,
+    documentsPath,
+    dataPath,
+  };
+
+  if (!existsSync(contentPath)) {
+    throw new Error('Ooops, you don\'t have any content folder.');
   }
 
-  const config = { ...DEFAULTS, ...options };
+  const config = { ...defaults, ...options };
   writeJson(CONFIG_PATH, config);
 };
 
