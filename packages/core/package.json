@@ -8,9 +8,7 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
-    "@baretheme/browser": "^1.0.0",
     "@baretheme/next": "^1.0.0",
-    "@baretheme/ssr": "^1.0.0",
     "dotenv": "^8.2.0",
     "meow": "^6.1.0",
     "next": "^9.3.4",
