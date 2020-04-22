@@ -1,5 +1,5 @@
 import { readSite } from '@baretheme/fs';
-import { getSite } from '../../api/get-site';
+import { getSite } from './get-site';
 
 jest.mock('@baretheme/fs', () => ({
   readSite: jest.fn(),

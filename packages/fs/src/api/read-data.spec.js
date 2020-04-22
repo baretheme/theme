@@ -3,7 +3,7 @@ const { readAllJson } = require('../lib/read-all-json');
 const { readData } = require('./read-data');
 const { getConfig } = require('./get-config');
 
-jest.mock('../../lib/read-all-json', () => ({
+jest.mock('../lib/read-all-json', () => ({
   readAllJson: jest.fn(),
 }));
 

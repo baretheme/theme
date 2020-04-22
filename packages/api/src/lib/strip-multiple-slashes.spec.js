@@ -1,4 +1,4 @@
-import { stripMultipleSlashes } from '../../lib/strip-multiple-slashes';
+import { stripMultipleSlashes } from './strip-multiple-slashes';
 
 describe('stripMultipleSlashes', () => {
   it('returns slug without multiple slashes', () => {

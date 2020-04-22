@@ -1,5 +1,5 @@
 import { readNavigation } from '@baretheme/fs';
-import { getNavigation } from '../../api/get-navigation';
+import { getNavigation } from './get-navigation';
 
 jest.mock('@baretheme/fs', () => ({
   readNavigation: jest.fn(),

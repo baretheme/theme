@@ -1,5 +1,5 @@
 import { readDocument } from '@baretheme/fs';
-import { getDocumentByPath } from '../../lib/get-document-by-path';
+import { getDocumentByPath } from './get-document-by-path';
 
 jest.mock('@baretheme/fs', () => ({
   readDocument: jest.fn(),

@@ -1,5 +1,5 @@
-import { getDocumentBySlug } from '../../lib/get-document-by-slug';
-import { getDocumentByPath } from '../../lib/get-document-by-path';
+import { getDocumentBySlug } from './get-document-by-slug';
+import { getDocumentByPath } from './get-document-by-path';
 
 jest.mock('../../lib/get-document-by-path', () => ({
   getDocumentByPath: jest.fn(),

@@ -1,4 +1,4 @@
-import { stripLanguageFromSlug } from '../../lib/strip-language-from-slug';
+import { stripLanguageFromSlug } from './strip-language-from-slug';
 
 describe('stripLanguageFromSlug', () => {
   it('returns slug without language', () => {

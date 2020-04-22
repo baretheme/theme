@@ -15,7 +15,9 @@
   },
   "devDependencies": {
     "@baretheme/test-utils": "^1.0.0",
-    "mock-fs": "^4.11.0"
+    "memfs": "^3.1.2",
+    "mock-fs": "^4.11.0",
+    "unionfs": "^4.4.0"
   },
   "dependencies": {
     "fs-extra": "^9.0.0",

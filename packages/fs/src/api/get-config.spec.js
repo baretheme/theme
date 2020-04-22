@@ -2,7 +2,7 @@ import { readJson } from '../lib/read-json';
 import { getConfig } from './get-config';
 import { DEFAULTS } from '../constants';
 
-jest.mock('../../lib/read-json', () => ({
+jest.mock('../lib/read-json', () => ({
   readJson: jest.fn(),
 }));
 

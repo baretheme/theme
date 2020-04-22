@@ -1,4 +1,4 @@
-import { getLanguageFromSlug } from '../../lib/get-language-from-slug';
+import { getLanguageFromSlug } from './get-language-from-slug';
 
 describe('getLanguageFromSlug', () => {
   it('returns the right language', () => {

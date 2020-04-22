@@ -21,7 +21,7 @@ module.exports = {
     'node_modules',
     'packages',
   ],
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js', 'jest-plugin-fs/setup'],
   testPathIgnorePatterns: [...defaults.testPathIgnorePatterns, '.cache', 'dist'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'ts-jest',

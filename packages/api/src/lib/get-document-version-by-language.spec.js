@@ -1,5 +1,5 @@
 import { createDocument } from '@baretheme/test-utils';
-import { getDocumentVersionByLanguage } from '../../lib/get-document-version-by-language';
+import { getDocumentVersionByLanguage } from './get-document-version-by-language';
 
 describe('getDocumentVersionByLanguage', () => {
   it('returns the right version', () => {

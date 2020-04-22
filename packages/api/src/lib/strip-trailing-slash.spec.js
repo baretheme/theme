@@ -1,4 +1,4 @@
-import { stripTrailingSlash } from '../../lib/strip-trailing-slash';
+import { stripTrailingSlash } from './strip-trailing-slash';
 
 describe('stripTrailingSlash', () => {
   it('removes all trailing slashes in string', () => {

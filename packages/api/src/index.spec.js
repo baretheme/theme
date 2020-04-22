@@ -3,7 +3,7 @@ import {
   getNavigation,
   getSite,
   getData,
-} from '..';
+} from '.';
 
 describe('index', () => {
   it('exports all public methods', () => {

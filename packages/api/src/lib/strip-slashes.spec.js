@@ -1,4 +1,4 @@
-import { stripSlashes } from '../../lib/strip-slashes';
+import { stripSlashes } from './strip-slashes';
 
 describe('stripSlashes', () => {
   it('removes all slashes in string', () => {

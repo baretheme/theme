@@ -2,11 +2,11 @@ const { readDir } = require('./read-dir');
 const { readJson } = require('./read-json');
 const { readAllJson } = require('./read-all-json');
 
-jest.mock('../../lib/read-dir', () => ({
+jest.mock('./read-dir', () => ({
   readDir: jest.fn(),
 }));
 
-jest.mock('../../lib/read-json', () => ({
+jest.mock('./read-json', () => ({
   readJson: jest.fn(),
 }));
 
