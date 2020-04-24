@@ -1,5 +1,5 @@
 const { existsSync, readFileSync } = require('fs-extra');
-const { ensureJson } = require('./ensure-json');
+const { ensureJson } = require('../lib/ensure-json');
 
 const readJson = (path) => {
   const jsonPath = ensureJson(path);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { PageProvider } from '@baretheme/core/context/page';
+import { PageProvider } from '../context/page';
 
 const Document = ({ document }) => (
   <PageProvider value={{ document }}>

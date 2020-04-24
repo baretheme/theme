@@ -1,23 +1,30 @@
 {
   "name": "@baretheme/next",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
-  "license": "MIT",
   "scripts": {
-    "build": "npm run clean && npm run compile",
-    "clean": "rm -rf ./dist",
-    "compile": "tsc -p tsconfig.build.json"
-  },
-  "peerDependencies": {
-    "next": "^9.3.4"
+    "dev": "next dev --scripts-prepend-node-path",
+    "build": "next build",
+    "start": "next start",
+    "clean": "rm -rf .next"
   },
   "dependencies": {
+    "@baretheme/api": "^1.0.0",
+    "consola": "^2.11.3",
+    "dotenv": "^8.2.0",
+    "find-up": "^4.1.0",
+    "meow": "^6.1.0",
+    "next": "^9.3.4",
     "next-svgr": "^0.0.2",
-    "next-transpile-modules": "^3.2.0"
+    "next-transpile-modules": "^3.2.0",
+    "node-fetch": "^2.6.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "bin": {
+    "baretheme": "cli/bin.js"
+  },
+  "devDependencies": {
+    "chalk": "^4.0.0",
+    "npm": "^6.14.4"
   }
 }

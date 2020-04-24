@@ -1,5 +1,5 @@
 const { join } = require('path');
-const { readDir } = require('./read-dir');
+const { readDir } = require('../lib/read-dir');
 const { readJson } = require('./read-json');
 
 const readAllJson = (path) => {
