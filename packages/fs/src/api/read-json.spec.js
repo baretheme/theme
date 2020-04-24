@@ -4,7 +4,7 @@ import { readJson } from './read-json';
 
 jest.mock('fs');
 
-afterEach(() => {
+beforeEach(() => {
   vol.reset();
 });
 

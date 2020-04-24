@@ -1,41 +1,68 @@
-const fs = require('fs-extra');
-const { readDir } = require('./read-dir');
+import { vol } from 'memfs';
+import { readDir } from './read-dir';
 
-jest.mock('fs-extra', () => ({
-  existsSync: jest.fn(),
-  readdirSync: jest.fn(),
-}));
+jest.mock('fs');
 
 beforeEach(() => {
-  fs.existsSync.mockClear();
-  fs.readdirSync.mockClear();
+  vol.reset();
 });
 
 describe('readDir', () => {
   it('should read all documents if dir exists', () => {
-    fs.existsSync.mockReturnValue(true);
-    fs.readdirSync.mockReturnValue([
-      'file-1.json',
-      'file-2.json',
-    ]);
-    const path = 'content/documents';
-    readDir(path);
-    expect(fs.readdirSync).toHaveBeenCalledTimes(1);
-    expect(fs.readdirSync).toHaveBeenCalledWith(path);
+    vol.fromJSON({
+      './index.json': '1',
+      './blog.json': '2',
+    }, '/content');
+    const path = '/content';
+    expect(readDir(path)).toEqual(expect.arrayContaining(['/content/index.json', '/content/blog.json']));
+  });
+
+  it('should ignore subfolders', () => {
+    vol.fromJSON({
+      './index.json': '1',
+      './blog.json': '2',
+      './blog/article.json': '3',
+    }, '/content');
+    const path = '/content';
+    expect(readDir(path)).toEqual(expect.arrayContaining(['/content/index.json', '/content/blog.json']));
+    expect(readDir(path)).not.toEqual(expect.arrayContaining(['/content/blog']));
   });
 
   it('should return null if no dir exists', () => {
-    fs.existsSync.mockReturnValue(false);
-    const dir = readDir('content/documents');
-    expect(fs.readdirSync).toHaveBeenCalledTimes(0);
-    expect(dir).toBe(null);
+    vol.fromJSON({
+      './index.json': '1',
+    }, '/content');
+    const path = '/foo';
+    expect(readDir(path)).toEqual(null);
   });
 
-  it('should return empty array if no file preset', () => {
-    fs.existsSync.mockReturnValue(true);
-    fs.readdirSync.mockReturnValue([]);
-    const dir = readDir('content/documents');
-    expect(fs.readdirSync).toHaveBeenCalledTimes(1);
-    expect(dir).toEqual([]);
+  it('should return empty array if no file exists', () => {
+    vol.fromJSON({
+      '.empty': '1',
+    }, '/content');
+    const path = '/content';
+    expect(readDir(path)).toEqual([]);
+  });
+
+  it('should only return json files', () => {
+    vol.fromJSON({
+      './index.json': '1',
+      './blog.js': '1',
+      './articles.jsonp': '1',
+    }, '/content');
+    const path = '/content';
+    expect(readDir(path)).toEqual(['/content/index.json']);
+  });
+
+  describe('with recursive option', () => {
+    it('should find files in subfolders', () => {
+      vol.fromJSON({
+        './index.json': '1',
+        './blog.json': '2',
+        './blog/article.json': '3',
+      }, '/content');
+      const path = '/content';
+      expect(readDir(path, { recursive: true })).toEqual(expect.arrayContaining(['/content/index.json', '/content/blog.json', '/content/blog/article.json']));
+    });
   });
 });

@@ -1,10 +1,9 @@
-const { join } = require('path');
 const { readDir } = require('../lib/read-dir');
 const { readJson } = require('./read-json');
 
 const readAllJson = (path) => {
-  const fileNames = readDir(path);
-  return fileNames.map((fileName) => readJson(join(path, fileName)));
+  const fileNames = readDir(path, { recursive: true });
+  return fileNames.map((fileName) => readJson(fileName));
 };
 
 module.exports = {

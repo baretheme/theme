@@ -1,68 +1,35 @@
-const { readDir } = require('../lib/read-dir');
-const { readJson } = require('./read-json');
-const { readAllJson } = require('./read-all-json');
+import { vol } from 'memfs';
+import { createDocument } from '@baretheme/test-utils';
+import { readAllJson } from './read-all-json';
 
-jest.mock('./read-dir', () => ({
-  readDir: jest.fn(),
-}));
-
-jest.mock('./read-json', () => ({
-  readJson: jest.fn(),
-}));
+jest.mock('fs');
 
 beforeEach(() => {
-  readDir.mockClear();
-  readJson.mockClear();
+  vol.reset();
 });
 
 describe('readAllJson', () => {
   it('should read all json files if exists', () => {
-    const mockPath = 'some/path';
-    const mockFiles = ['file-1.json', 'file-2.json'];
-    const mockJson1 = {
-      title: 'test-1',
-    };
-    const mockJson2 = {
-      title: 'test-2',
-    };
-    const mockJsonFiles = {
-      'some/path/file-1.json': mockJson1,
-      'some/path/file-2.json': mockJson2,
-    };
+    const mockFile1 = createDocument();
+    const mockFile2 = createDocument();
 
-    readDir.mockReturnValue(mockFiles);
-    readJson.mockImplementation((path) => mockJsonFiles[path]);
+    vol.fromJSON({
+      './index.json': JSON.stringify(mockFile1),
+      './blog.json': JSON.stringify(mockFile2),
+    }, '/content');
 
-    const jsonFiles = readAllJson(mockPath);
-
-    expect(readDir).toHaveBeenCalledTimes(1);
-    expect(readDir).toHaveBeenCalledWith(mockPath);
-    expect(readJson).toHaveBeenCalledTimes(mockFiles.length);
-    expect(jsonFiles).toEqual([mockJson1, mockJson2]);
+    const path = '/content';
+    const files = readAllJson(path);
+    expect(files).toEqual(expect.arrayContaining([mockFile1, mockFile2]));
   });
 
   it('should return empty array if none exists', () => {
-    const mockPath = 'some/path';
-    const mockFiles = [];
-    const mockJson1 = {
-      title: 'test-1',
-    };
-    const mockJson2 = {
-      title: 'test-2',
-    };
-    const mockJsonFiles = {
-      'some/path/file-1.json': mockJson1,
-      'some/path/file-2.json': mockJson2,
-    };
+    vol.fromJSON({
+      '.empty': '1',
+    }, '/content');
 
-    readDir.mockReturnValue(mockFiles);
-    readJson.mockImplementation((path, name) => mockJsonFiles[name]);
-
-    const jsonFiles = readAllJson(mockPath);
-
-    expect(readDir).toHaveBeenCalledTimes(1);
-    expect(readDir).toHaveBeenCalledWith(mockPath);
-    expect(readJson).toHaveBeenCalledTimes(0);
-    expect(jsonFiles).toEqual([]);
+    const path = '/content';
+    const files = readAllJson(path);
+    expect(files).toEqual([]);
   });
 });

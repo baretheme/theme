@@ -1,16 +1,45 @@
 import React from 'react';
 import { getConfig } from '@baretheme/next';
+import { readAllJson } from '@baretheme/fs';
+import path from 'path';
 // import { getDocumentVersionBySlug } from '@baretheme/api';
 
 const Document = () => (<div>Example Doc</div>);
 
 export default Document;
 
+const getAllDocuments = ({ publicOnly } = {}) => {
+  const config = getConfig();
+  let documents = readAllJson(config.documentsPath);
+
+  if (publicOnly) {
+    documents = documents.filter((d) => !d.draft);
+  }
+
+  return documents;
+};
+
+const getAllVersions = (documents) => documents.reduce((acc, item) => [
+  ...acc,
+  ...item.versions,
+], []);
+
+const getVersionURLs = (versions) => versions.map((v) => path.join(v.language, v.slug));
+
 export async function getStaticPaths() {
+  const documents = getAllDocuments({ publicOnly: true });
+  const versions = getAllVersions(documents);
+  const urls = getVersionURLs(versions);
+  const paths = urls.map((url) => ({
+    params: {
+      slug: url.split('/'),
+    },
+  }));
+  console.log(urls);
+  console.log(paths[0].params);
+
   return {
-    paths: [
-      { params: { slug: ['blog'] } },
-    ],
+    paths,
     fallback: false,
   };
 }
