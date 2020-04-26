@@ -1,6 +1,6 @@
 import { vol } from 'memfs';
 import { createDocument } from '@baretheme/test-utils';
-import { readAllJson } from './read-all-json';
+import { processFiles } from './process-files';
 
 jest.mock('fs');
 
@@ -8,10 +8,11 @@ beforeEach(() => {
   vol.reset();
 });
 
-describe('readAllJson', () => {
-  it('should read all json files if exists', () => {
+describe('processFiles', () => {
+  it('should call the callback on each file', () => {
     const mockFile1 = createDocument();
     const mockFile2 = createDocument();
+    const cb = jest.fn();
 
     vol.fromJSON({
       './index.json': JSON.stringify(mockFile1),
@@ -19,17 +20,21 @@ describe('readAllJson', () => {
     }, '/content');
 
     const path = '/content';
-    const files = readAllJson(path);
-    expect(files).toEqual(expect.arrayContaining([mockFile1, mockFile2]));
+    processFiles(path, cb);
+    expect(cb).toHaveBeenCalledWith('/content/index.json');
+    expect(cb).toHaveBeenCalledWith('/content/blog.json');
+    expect(cb).toHaveBeenCalledTimes(2);
   });
 
   it('should return empty array if none exists', () => {
+    const cb = jest.fn();
+
     vol.fromJSON({
       '.empty': '1',
     }, '/content');
 
     const path = '/content';
-    const files = readAllJson(path);
-    expect(files).toEqual([]);
+    processFiles(path, cb);
+    expect(cb).not.toHaveBeenCalled();
   });
 });

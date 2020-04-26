@@ -49,7 +49,7 @@ export const createCollections = () => createMany(createCollection);
 export const createSite = (props) => ({
   title: faker.random.word(),
   description: faker.random.words(),
-  logo: faker.system.filePath(),
+  logo: faker.system.fileName(),
   defaultLanguage: pickOne(defaultLanguages).code,
   collections: defaultCollections,
   languages: defaultLanguages,
@@ -76,7 +76,7 @@ export const createDocument = (props) => ({
   date: faker.date.past().toString(),
   draft: faker.random.boolean(),
   collections: attrs(pickSome(defaultCollections), 'id'),
-  versions: defaultLanguages.map((language) => createVersion({ language })),
+  versions: defaultLanguages.map((language) => createVersion({ language: language.code })),
   ...props,
 });
 

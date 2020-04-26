@@ -1,42 +1,26 @@
-import React from 'react';
-import { getConfig } from '@baretheme/next';
-import { readAllJson } from '@baretheme/fs';
 import path from 'path';
-// import { getDocumentVersionBySlug } from '@baretheme/api';
-
-const Document = () => (<div>Example Doc</div>);
+import { getConfig } from '@baretheme/next';
+import {
+  readJson,
+  removeFromFilename,
+} from '@baretheme/fs';
+import {
+  getDocumentVersionBySlug,
+  getAllURLs,
+} from '@baretheme/api';
+import { Document } from '../components/document';
 
 export default Document;
 
-const getAllDocuments = ({ publicOnly } = {}) => {
-  const config = getConfig();
-  let documents = readAllJson(config.documentsPath);
-
-  if (publicOnly) {
-    documents = documents.filter((d) => !d.draft);
-  }
-
-  return documents;
-};
-
-const getAllVersions = (documents) => documents.reduce((acc, item) => [
-  ...acc,
-  ...item.versions,
-], []);
-
-const getVersionURLs = (versions) => versions.map((v) => path.join(v.language, v.slug));
-
 export async function getStaticPaths() {
-  const documents = getAllDocuments({ publicOnly: true });
-  const versions = getAllVersions(documents);
-  const urls = getVersionURLs(versions);
+  const config = getConfig();
+  const urls = getAllURLs(config);
+
   const paths = urls.map((url) => ({
     params: {
-      slug: url.split('/'),
+      slug: url ? url.split('/') : ['/'],
     },
   }));
-  console.log(urls);
-  console.log(paths[0].params);
 
   return {
     paths,
@@ -44,38 +28,21 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(ctx) {
-  console.log(ctx);
+export async function getStaticProps({ params }) {
   const config = getConfig();
-  console.log('GETTING DOC BY PATH', config.documentsPath);
+  const slug = path.join(params?.slug || ['/']);
+  const version = getDocumentVersionBySlug(config, slug);
+  const optimizedVersion = Object.keys(version).reduce((acc, key) => {
+    const value = version[key];
+    if (key.startsWith('$')) return acc;
+    return {
+      ...acc,
+      [key]: value,
+    };
+  }, {});
   return {
     props: {
-      DOC: {
-        foo: 'bar',
-      },
+      document: optimizedVersion,
     },
   };
 }
-
-// import { getDocumentVersionBySlug, getData } from '@baretheme/api';
-// import { Document } from '../components/document';
-
-// export default Document;
-
-// export async function getServerSideProps({ res, req }) {
-// const document = getDocumentVersionBySlug(req.url);
-// const data = getData();
-
-// if (!document) {
-//   res.statusCode = 404;
-//   res.end('Document was not found.');
-//   return;
-// }
-
-// return {
-//   props: {
-//     document,
-//     data,
-//   },
-// };
-// }
