@@ -1,1 +1,1 @@
-module.exports = require('./fs-extra');
+module.exports = require('memfs');

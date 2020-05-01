@@ -1,7 +1,7 @@
-const fs = require('fs-extra');
-const glob = require('glob');
+import fs from 'fs-extra';
+import glob from 'glob';
 
-const readDir = (path, { recursive } = {}) => {
+export const readDir = (path, { recursive } = {}) => {
   if (!fs.existsSync(path)) {
     return null;
   }
@@ -9,8 +9,4 @@ const readDir = (path, { recursive } = {}) => {
     return glob.sync(`${path}/**/*.json`);
   }
   return glob.sync(`${path}/*.json`);
-};
-
-module.exports = {
-  readDir,
 };

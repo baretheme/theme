@@ -2,6 +2,7 @@ import { vol } from 'memfs';
 import { createDocument } from '@baretheme/test-utils';
 import { readJson } from './read-json';
 
+// jest.mock('fs', () => require('memfs'));
 jest.mock('fs');
 
 beforeEach(() => {

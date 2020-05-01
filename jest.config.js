@@ -1,7 +1,8 @@
 const { defaults } = require('jest-config');
 
 module.exports = {
-  roots: ['<rootDir>/packages'],
+  clearMocks: true,
+  roots: ['<rootDir>', '<rootDir>/packages'],
   collectCoverageFrom: [
     'packages/*/src/**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
@@ -21,7 +22,7 @@ module.exports = {
     'node_modules',
     'packages',
   ],
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js', 'jest-plugin-fs/setup'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   testPathIgnorePatterns: [...defaults.testPathIgnorePatterns, '.cache', 'dist'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'ts-jest',

@@ -1,10 +1,6 @@
-const { readDir } = require('./read-dir');
+import { readDir } from './read-dir';
 
-const processFiles = (path, fn) => {
+export const processFiles = (path, fn) => {
   const fileNames = readDir(path, { recursive: true });
   return fileNames.map((fileName) => fn(fileName));
-};
-
-module.exports = {
-  processFiles,
 };

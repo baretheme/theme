@@ -2,7 +2,8 @@ import { vol } from 'memfs';
 import { createDocument } from '@baretheme/test-utils';
 import { getDocument } from './get-document';
 
-jest.mock('fs');
+// eslint-disable-next-line global-require
+jest.mock('fs', () => require('memfs'));
 
 beforeEach(() => {
   vol.reset();
@@ -15,6 +16,15 @@ describe('getDocument', () => {
       './blog.json': JSON.stringify(mockDocument),
     }, '/content');
     const document = getDocument('/content/blog');
+    expect(document).toMatchObject(mockDocument);
+  });
+
+  it('finds a nested document', () => {
+    const mockDocument = createDocument();
+    vol.fromJSON({
+      './de/blog/article.json': JSON.stringify(mockDocument),
+    }, '/content');
+    const document = getDocument('/content/de/blog/article');
     expect(document).toMatchObject(mockDocument);
   });
 

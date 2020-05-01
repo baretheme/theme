@@ -1,6 +1,6 @@
 import path from 'path';
 
-const removeFromFilename = (filename, value) => {
+export const removeFromFilename = (filename, value) => {
   const parts = filename.split(path.sep)
     .filter((part) => part !== value);
   if (filename === path.sep || !parts.length) {
@@ -9,5 +9,3 @@ const removeFromFilename = (filename, value) => {
   const newFilename = path.join(...parts);
   return newFilename === '.' ? null : newFilename;
 };
-
-export { removeFromFilename };

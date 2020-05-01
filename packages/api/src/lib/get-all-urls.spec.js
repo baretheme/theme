@@ -2,7 +2,8 @@ import { vol } from 'memfs';
 import { createSite, createDocument } from '@baretheme/test-utils';
 import { getAllURLs } from './get-all-urls';
 
-jest.mock('fs');
+// eslint-disable-next-line global-require
+jest.mock('fs', () => require('memfs'));
 
 beforeEach(() => {
   vol.reset();

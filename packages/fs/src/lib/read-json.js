@@ -1,7 +1,7 @@
-const { existsSync, readFileSync } = require('fs-extra');
-const { ensureJson } = require('./ensure-json');
+import { existsSync, readFileSync } from 'fs';
+import { ensureJson } from './ensure-json';
 
-const readJson = (path) => {
+export const readJson = (path) => {
   const jsonPath = ensureJson(path);
 
   if (!existsSync(jsonPath)) {
@@ -14,8 +14,4 @@ const readJson = (path) => {
     ...json,
   };
   return file;
-};
-
-module.exports = {
-  readJson,
 };

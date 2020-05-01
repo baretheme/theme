@@ -7,6 +7,7 @@ import {
 import {
   getDocumentVersionBySlug,
   getAllURLs,
+  optimizeVersion,
 } from '@baretheme/api';
 import { Document } from '../components/document';
 
@@ -32,14 +33,7 @@ export async function getStaticProps({ params }) {
   const config = getConfig();
   const slug = path.join(params?.slug || ['/']);
   const version = getDocumentVersionBySlug(config, slug);
-  const optimizedVersion = Object.keys(version).reduce((acc, key) => {
-    const value = version[key];
-    if (key.startsWith('$')) return acc;
-    return {
-      ...acc,
-      [key]: value,
-    };
-  }, {});
+  const optimizedVersion = optimizeVersion(version);
   return {
     props: {
       document: optimizedVersion,

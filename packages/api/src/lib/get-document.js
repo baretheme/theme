@@ -5,7 +5,6 @@ const getDocument = (filename) => {
   const dir = path.dirname(filename);
   const json = readJson(filename);
   const basename = path.basename(filename);
-
   if (!json) { return null; }
 
   const parent = readJson(dir);

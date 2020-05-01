@@ -1,6 +1,6 @@
-const { extname } = require('path');
+import { extname } from 'path';
 
-const ensureJson = (path) => {
+export const ensureJson = (path) => {
   let jsonPath = path;
   const json = '.json';
   const ext = extname(path);
@@ -12,8 +12,4 @@ const ensureJson = (path) => {
   }
 
   return jsonPath;
-};
-
-module.exports = {
-  ensureJson,
 };

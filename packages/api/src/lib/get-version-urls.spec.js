@@ -1,4 +1,4 @@
-import { createVersion } from '@baretheme/fs';
+import { createVersion } from '@baretheme/test-utils';
 import { getVersionURLs } from './get-version-urls';
 
 describe('getVersionURLs', () => {
