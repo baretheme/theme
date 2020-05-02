@@ -1,21 +1,18 @@
 import path from 'path';
 import { getConfig } from '@baretheme/next';
 import {
-  readJson,
-  removeFromFilename,
-} from '@baretheme/fs';
-import {
-  getDocumentVersionBySlug,
-  getAllURLs,
+  getAllDocumentsByURL,
   optimizeVersion,
 } from '@baretheme/api';
 import { Document } from '../components/document';
 
+const config = getConfig();
+const documents = getAllDocumentsByURL(config, { publicOnly: true });
+
 export default Document;
 
 export async function getStaticPaths() {
-  const config = getConfig();
-  const urls = getAllURLs(config);
+  const urls = Object.keys(documents);
 
   const paths = urls.map((url) => ({
     params: {
@@ -30,9 +27,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const config = getConfig();
-  const slug = path.join(params?.slug || ['/']);
-  const version = getDocumentVersionBySlug(config, slug);
+  const slug = params?.slug ? path.join(...params.slug) : 'index';
+  const version = documents[slug];
   const optimizedVersion = optimizeVersion(version);
   return {
     props: {

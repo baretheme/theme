@@ -4,7 +4,7 @@ import { readJson } from '@baretheme/fs';
 const getDocument = (filename) => {
   const dir = path.dirname(filename);
   const json = readJson(filename);
-  const basename = path.basename(filename);
+  const basename = path.basename(filename, '.json');
   if (!json) { return null; }
 
   const parent = readJson(dir);
@@ -21,6 +21,9 @@ const getDocument = (filename) => {
     }
 
     $url = path.join(v.language, $url);
+
+    $url = $url.replace(/([^:]\/)\/+/g, '$1'); // remove double slashes
+    $url = $url.replace(/^\/|\/$/g, ''); // remove leading and trailing slashes
 
     return {
       $url,
