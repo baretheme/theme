@@ -1,3 +1,13 @@
+import path from 'path';
+import { getAllDocumentsByURL } from '@baretheme/api';
+
+const config = {
+  dataPath: path.resolve(process.cwd(), 'example', 'content', 'data'),
+  documentsPath: path.resolve(process.cwd(), 'example', 'content', 'documents'),
+};
+
+console.log(config);
+
 describe('Index page', () => {
   describe('Default', () => {
     beforeEach(() => {

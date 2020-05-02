@@ -22,7 +22,7 @@
     "react-dom": "^16.13.1"
   },
   "bin": {
-    "baretheme": "cli/bin.js"
+    "baretheme": "bin/baretheme.js"
   },
   "devDependencies": {
     "chalk": "^4.0.0",

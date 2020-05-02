@@ -1,6 +1,6 @@
-const { resolve, join } = require('path');
+const { join } = require('path');
 const fs = require('fs-extra');
-const { TMP, CONFIG } = require('./constants');
+const { CONFIG } = require('./constants');
 
 const assignDefaults = ({ root, config = {} }) => {
   const defaults = {
@@ -16,8 +16,15 @@ const assignDefaults = ({ root, config = {} }) => {
 };
 
 const getConfig = () => {
-  const config = fs.readJsonSync(resolve(process.cwd(), TMP, CONFIG));
-  return assignDefaults({ root: process.env.BARETHEME_ROOT, config });
+  const root = process.cwd();
+  const configPath = CONFIG;
+  if (fs.existsSync(configPath)) {
+    // eslint-disable-next-line
+    const config = require(configPath);
+    return assignDefaults({ root, config });
+  }
+
+  return assignDefaults({ root });
 };
 
 module.exports = {

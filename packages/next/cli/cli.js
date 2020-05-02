@@ -1,36 +1,25 @@
-const { spawn } = require('child_process');
-const consola = require('consola');
 const { resolve } = require('path');
+const { dev } = require('./dev');
 const { start } = require('./start');
+const { build } = require('./build');
 
-module.exports = ({ input }) => {
-  consola.info('WELCOME TO BARETHEME');
+module.exports = ({ input, flags, showHelp }) => {
   const projectDir = process.cwd();
   const barethemeDir = resolve(__dirname, '..');
+  const command = input[0];
+  const commands = {
+    dev,
+    start,
+    build,
+  };
 
-  start({
-    projectDir,
-    barethemeDir,
-    command: input[0],
-  });
-
-  try {
-    const next = spawn('next', input, {
-      cwd: barethemeDir,
-      stdio: 'inherit',
-      shell: true,
-      env: {
-        ...process.env,
-        BARETHEME_ROOT: projectDir,
-      },
-    });
-    next.on('error', () => {
-      process.exit();
-    });
-    next.on('close', () => {
-      process.exit();
-    });
-  } catch (e) {
-    console.error('ERR IN CATCH', e);
+  if (!commands[command]) {
+    return showHelp();
   }
+
+  return commands[command]({
+    barethemeDir,
+    projectDir,
+    ...flags,
+  });
 };

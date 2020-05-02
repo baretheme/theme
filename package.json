@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "lerna run build",
+    "build:example": "lerna run build --scope example",
     "build:packages": "lerna run build --scope @baretheme/* --ignore @baretheme/next",
     "dev": "lerna run dev --parallel",
     "dev:test": "yarn workspace example run dev",
