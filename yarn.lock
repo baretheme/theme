@@ -1307,6 +1307,14 @@
     tunnel-agent "^0.6.0"
     uuid "^3.3.2"
 
+"@cypress/webpack-preprocessor@^5.1.2":
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@cypress/webpack-preprocessor/-/webpack-preprocessor-5.1.2.tgz#9395924915ffa6a4ecc02c159007eef68d7d6532"
+  integrity sha512-Id8OQ9sRlSHhh8xXYI10jN54Mr5MHCbkD3+mu0BTMGrVFGNcWfcMc5+aOhDPlgHJ7rHp1mmaEJtpx853Fpg7lg==
+  dependencies:
+    bluebird "3.7.1"
+    debug "4.1.1"
+
 "@cypress/xvfb@1.2.4":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@cypress/xvfb/-/xvfb-1.2.4.tgz#2daf42e8275b39f4aa53c14214e557bd14e7748a"
@@ -3301,7 +3309,7 @@ acorn-walk@^6.0.1:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-6.2.0.tgz#123cb8f3b84c2171f1f7fb252615b1c78a6b1a8c"
   integrity sha512-7evsyfH1cLOCdAzZAd43Cic04yKydNx0cF+7tiA19p1XnLLPU4dpCQOqpjqwokFe//vS0QqfqqjCS2JkiIs0cA==
 
-acorn@^6.0.1, acorn@^6.2.1:
+acorn@^6.0.1, acorn@^6.2.1, acorn@^6.4.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
   integrity sha512-ZVA9k326Nwrj3Cj9jlh3wGFutC2ZornPNARZwsNYqQYgN0EsV2d53w5RN/co65Ohn4sUAUtb1rSUAOD6XN9idA==
@@ -3894,6 +3902,11 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
+bluebird@3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.1.tgz#df70e302b471d7473489acf26a93d63b53f874de"
+  integrity sha512-DdmyoGCleJnkbp3nkbxTLJ18rjDsE4yCggEwKNXkeV123sPNfOCYeDoeuOY+F2FrSjO1YXcTU+dsy96KMy+gcg==
+
 bluebird@3.7.2, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
@@ -4277,7 +4290,7 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.1, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
+chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.1, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -5240,10 +5253,62 @@ cypress-jest-adapter@^0.1.1:
     jest-jquery-matchers "^2.1.0"
     jquery "^3.4.0"
 
-cypress@*, cypress@^4.4.0:
+cypress@*:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-4.4.1.tgz#f5aa1aa5f328f1299bff328103f7cbad89e80f29"
   integrity sha512-LcskZ/PXRG9XTlEeeenKqz/KddT1x+7O7dqXsdKWPII01LxLNmNHIvHnlUqApchVbinJ5vir6J255CkELSeL0A==
+  dependencies:
+    "@cypress/listr-verbose-renderer" "0.4.1"
+    "@cypress/request" "2.88.5"
+    "@cypress/xvfb" "1.2.4"
+    "@types/blob-util" "1.3.3"
+    "@types/bluebird" "3.5.29"
+    "@types/chai" "4.2.7"
+    "@types/chai-jquery" "1.1.40"
+    "@types/jquery" "3.3.31"
+    "@types/lodash" "4.14.149"
+    "@types/minimatch" "3.0.3"
+    "@types/mocha" "5.2.7"
+    "@types/sinon" "7.5.1"
+    "@types/sinon-chai" "3.2.3"
+    "@types/sizzle" "2.3.2"
+    arch "2.1.1"
+    bluebird "3.7.2"
+    cachedir "2.3.0"
+    chalk "2.4.2"
+    check-more-types "2.24.0"
+    cli-table3 "0.5.1"
+    commander "4.1.0"
+    common-tags "1.8.0"
+    debug "4.1.1"
+    eventemitter2 "4.1.2"
+    execa "1.0.0"
+    executable "4.1.1"
+    extract-zip "1.7.0"
+    fs-extra "8.1.0"
+    getos "3.1.4"
+    is-ci "2.0.0"
+    is-installed-globally "0.1.0"
+    lazy-ass "1.6.0"
+    listr "0.14.3"
+    lodash "4.17.15"
+    log-symbols "3.0.0"
+    minimist "1.2.5"
+    moment "2.24.0"
+    ospath "1.2.2"
+    pretty-bytes "5.3.0"
+    ramda "0.26.1"
+    request-progress "3.0.0"
+    supports-color "7.1.0"
+    tmp "0.1.0"
+    untildify "4.0.0"
+    url "0.11.0"
+    yauzl "2.10.0"
+
+cypress@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-4.5.0.tgz#01940d085f6429cec3c87d290daa47bb976a7c7b"
+  integrity sha512-2A4g5FW5d2fHzq8HKUGAMVTnW6P8nlWYQALiCoGN4bqBLvgwhYM/oG9oKc2CS6LnvgHFiKivKzpm9sfk3uU3zQ==
   dependencies:
     "@cypress/listr-verbose-renderer" "0.4.1"
     "@cypress/request" "2.88.5"
@@ -5733,7 +5798,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-enhanced-resolve@^4.1.0:
+enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-4.1.1.tgz#2937e2b8066cd0fe7ce0990a98f0d71a35189f66"
   integrity sha512-98p2zE+rL7/g/DzMHMTF4zZlCgeVdJ7yr6xzEpJRYwFYrGi9ANdn5DnJURg6RpBkyk60XYDnWIv51VfIhfNGuA==
@@ -8952,7 +9017,7 @@ loader-utils@2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
-loader-utils@^1.1.0, loader-utils@^1.2.3:
+loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.4.0.tgz#c579b5e34cb34b1a74edc6c1fb36bfa371d5a613"
   integrity sha512-qH0WSMBtn/oHuwjy/NucEgbx5dbxxnxup9s4PVXJUDHZBQY+s0NWA9rJf53RBnQZxfch7euUui7hpoAPvALZdA==
@@ -9458,7 +9523,7 @@ microevent.ts@~0.1.1:
   resolved "https://registry.yarnpkg.com/microevent.ts/-/microevent.ts-0.1.1.tgz#70b09b83f43df5172d0205a63025bce0f7357fa0"
   integrity sha512-jo1OfR4TaEwd5HOrt5+tAZ9mqT4jmpNAusXtyfNzqVm9uiSYFZlKM1wYL4oU7azZW/PxQW53wM0S6OR1JHNa2g==
 
-micromatch@4.x, micromatch@^4.0.2:
+micromatch@4.x, micromatch@^4.0.0, micromatch@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.2.tgz#4fcb0999bf9fbc2fcbdd212f6d629b9a56c39259"
   integrity sha512-y7FpHSbMUMoyPbYUSzO6PaZ6FyRnQOpHuKwbo1G+Knck95XVU4QAiKdGEnj5wwoS7PlOgthX/09u5iFJ+aYf5Q==
@@ -13472,6 +13537,17 @@ ts-jest@^25.3.1:
     semver "6.x"
     yargs-parser "18.x"
 
+ts-loader@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-7.0.2.tgz#465bc904aea4c331e9550e7c7d75dd17a0b7c24c"
+  integrity sha512-DwpZFB67RoILQHx42dMjSgv2STpacsQu5X+GD/H9ocd8IhU0m8p3b/ZrIln2KmcucC6xep2PdEMEblpWT71euA==
+  dependencies:
+    chalk "^2.3.0"
+    enhanced-resolve "^4.0.0"
+    loader-utils "^1.0.2"
+    micromatch "^4.0.0"
+    semver "^6.0.0"
+
 ts-pnp@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
@@ -13932,7 +14008,7 @@ watchpack@2.0.0-beta.13:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
 
-watchpack@^1.6.0:
+watchpack@^1.6.0, watchpack@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.6.1.tgz#280da0a8718592174010c078c7585a74cd8cd0e2"
   integrity sha512-+IF9hfUFOrYOOaKyfaI7h7dquUIOgyEMoQMLA7OP5FxegKA2+XdXThAZ9TU2kucfhDH7rfMHs1oPYziVGWRnZA==
@@ -13988,6 +14064,35 @@ webpack@4.42.1:
     tapable "^1.1.3"
     terser-webpack-plugin "^1.4.3"
     watchpack "^1.6.0"
+    webpack-sources "^1.4.1"
+
+webpack@^4.43.0:
+  version "4.43.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.43.0.tgz#c48547b11d563224c561dad1172c8aa0b8a678e6"
+  integrity sha512-GW1LjnPipFW2Y78OOab8NJlCflB7EFskMih2AHdvjbpKMeDJqEgSx24cXXXiPS65+WSwVyxtDsJH6jGX2czy+g==
+  dependencies:
+    "@webassemblyjs/ast" "1.9.0"
+    "@webassemblyjs/helper-module-context" "1.9.0"
+    "@webassemblyjs/wasm-edit" "1.9.0"
+    "@webassemblyjs/wasm-parser" "1.9.0"
+    acorn "^6.4.1"
+    ajv "^6.10.2"
+    ajv-keywords "^3.4.1"
+    chrome-trace-event "^1.0.2"
+    enhanced-resolve "^4.1.0"
+    eslint-scope "^4.0.3"
+    json-parse-better-errors "^1.0.2"
+    loader-runner "^2.4.0"
+    loader-utils "^1.2.3"
+    memory-fs "^0.4.1"
+    micromatch "^3.1.10"
+    mkdirp "^0.5.3"
+    neo-async "^2.6.1"
+    node-libs-browser "^2.2.1"
+    schema-utils "^1.0.0"
+    tapable "^1.1.3"
+    terser-webpack-plugin "^1.4.3"
+    watchpack "^1.6.1"
     webpack-sources "^1.4.1"
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.5:
