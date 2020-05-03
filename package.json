@@ -12,7 +12,7 @@
     "clean": "lerna run clean",
     "lint": "eslint packages/*/src",
     "e2e": "node cypress/scripts/load-documents.js && start-test start 3000 cy:open",
-    "e2e:ci": "start-test start 3000 cy:run",
+    "e2e:ci": "node cypress/scripts/load-documents.js && start-test start 3000 cy:run",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "jest",
