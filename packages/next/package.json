@@ -2,15 +2,13 @@
   "name": "@baretheme/next",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next dev --scripts-prepend-node-path",
-    "build": "next build",
-    "start": "next start",
     "clean": "rm -rf .next"
   },
   "dependencies": {
     "@baretheme/api": "^1.0.0",
     "consola": "^2.11.3",
     "dotenv": "^8.2.0",
+    "eval": "^0.1.4",
     "find-up": "^4.1.0",
     "lru-cache": "^5.1.1",
     "meow": "^6.1.0",

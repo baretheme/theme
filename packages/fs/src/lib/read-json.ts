@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { ensureJson } from './ensure-json';
 
-export const readJson = (path) => {
+export const readJson = (path: string) => {
   const jsonPath = ensureJson(path);
 
   if (!existsSync(jsonPath)) {

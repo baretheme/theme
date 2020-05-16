@@ -1,9 +1,9 @@
 import fs from 'fs-extra';
 import glob from 'glob';
 
-export const readDir = (path, { recursive } = {}) => {
+export const readDir = (path: string, { recursive = false } = {}): string[] => {
   if (!fs.existsSync(path)) {
-    return null;
+    return [];
   }
   if (recursive) {
     return glob.sync(`${path}/**/*.json`);

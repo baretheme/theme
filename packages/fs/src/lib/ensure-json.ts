@@ -1,6 +1,6 @@
 import { extname } from 'path';
 
-export const ensureJson = (path) => {
+export const ensureJson = (path: string) => {
   let jsonPath = path;
   const json = '.json';
   const ext = extname(path);

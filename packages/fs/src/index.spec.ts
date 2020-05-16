@@ -1,10 +1,10 @@
-const {
+import {
   readJson,
   readDir,
   processFiles,
   ensureJson,
   removeFromFilename,
-} = require('./index');
+} from './index';
 
 describe('index', () => {
   it('exports all public methods', () => {

@@ -46,7 +46,7 @@ describe('getDocument', () => {
         './blog/article.json': JSON.stringify(mockChild),
       }, '/content');
       const child = getDocument('/content/blog/article');
-      expect(child.$parent).toMatchObject(mockParent);
+      expect(child!.$parent).toMatchObject(mockParent);
     });
 
     it('returns null if no parent exists', () => {
@@ -55,7 +55,7 @@ describe('getDocument', () => {
         './blog/article.json': JSON.stringify(mockChild),
       }, '/content');
       const child = getDocument('/content/blog/article');
-      expect(child.$parent).toEqual(null);
+      expect(child!.$parent).toEqual(null);
     });
   });
 
@@ -67,7 +67,7 @@ describe('getDocument', () => {
       }, '/content');
       const document = getDocument('/content/blog');
       const mockVersion = mockDocument.versions[0];
-      const documentVersion = document.versions[0];
+      const documentVersion = document!.versions[0];
       expect(documentVersion.$url).toEqual(`${mockVersion.language}/${mockVersion.slug}`);
     });
 
@@ -78,7 +78,7 @@ describe('getDocument', () => {
       }, '/content');
       const document = getDocument('/content/index');
       const mockVersion = mockDocument.versions[0];
-      const documentVersion = document.versions[0];
+      const documentVersion = document!.versions[0];
       expect(documentVersion.$url).toEqual(`${mockVersion.language}`);
     });
 
@@ -92,7 +92,7 @@ describe('getDocument', () => {
       const document = getDocument('/content/blog/article');
       const mockChildVersion = mockChild.versions[0];
       const mockParentVersion = mockParent.versions[0];
-      const documentVersion = document.versions[0];
+      const documentVersion = document!.versions[0];
       expect(documentVersion.$url).toEqual(`${mockChildVersion.language}/${mockParentVersion.slug}/${mockChildVersion.slug}`);
     });
   });

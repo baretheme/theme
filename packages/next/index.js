@@ -1,8 +1,9 @@
-const { join } = require('path');
-const fs = require('fs-extra');
-const { CONFIG } = require('./constants');
+import { join } from 'path';
+import fs from 'fs-extra';
+import _eval from 'eval';
+import { CUSTOM_CONFIG } from './constants';
 
-const assignDefaults = ({ root, config = {} }) => {
+const assignDefaults = (root, config = {}) => {
   const defaults = {
     documentsPath: join(root, 'content', 'documents'),
     dataPath: join(root, 'content', 'data'),
@@ -15,18 +16,14 @@ const assignDefaults = ({ root, config = {} }) => {
   };
 };
 
-const getConfig = () => {
+export const getConfig = () => {
   const root = process.cwd();
-  const configPath = CONFIG;
+  const configPath = CUSTOM_CONFIG;
+
   if (fs.existsSync(configPath)) {
-    // eslint-disable-next-line
-    const config = require(configPath);
-    return assignDefaults({ root, config });
+    const config = _eval(fs.readFileSync(configPath, 'utf-8'));
+    return assignDefaults(root, config);
   }
 
-  return assignDefaults({ root });
-};
-
-module.exports = {
-  getConfig,
+  return assignDefaults(root);
 };

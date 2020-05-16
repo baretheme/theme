@@ -2,8 +2,8 @@
   "name": "@baretheme/test-utils",
   "version": "1.0.0",
   "private": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index",
+  "types": "dist/index",
   "files": [
     "dist"
   ],
@@ -14,5 +14,8 @@
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@types/faker": "^4.1.11"
   }
 }
